@@ -9,15 +9,15 @@
     
        # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (import <home-manager/nixos> { }) 
+     # (import <home-manager/nixos> { }) 
     ];
- nixpkgs = {
+# nixpkgs = {
     # You can add overlays here
-    overlays = [
+ #   overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+  #    outputs.overlays.additions
+   #   outputs.overlays.modifications
+    #  outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -28,8 +28,8 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-    ];
-};
+   # ];
+#};
 
 
   # Bootloader.
@@ -79,7 +79,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.home-manager.useUserServices = true;
+#  services.home-manager.useUserServices = true;
  
  # Enable sound with pipewire.
 /*
@@ -105,10 +105,6 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sergei = {
    isNormalUser = true;
-    home = {
-    homeDirectory = "/home/sergei";
-    stateVersion = "24.05";
-    };
     description = "sergei";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
@@ -131,12 +127,12 @@
 */
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config ={
-     packagesOverrides = pkgs:{
-      unstable = import <nixos-unstable> {config = config.nixpkgs.config; };
-      home-manager.useGlobalPkgs = true;  
-   };
-   };
+#  nixpkgs.config ={
+#     packagesOverrides = pkgs:{
+#      unstable = import <nixos-unstable> {config = config.nixpkgs.config; };
+#      home-manager.useGlobalPkgs = true;  
+#   };
+#   };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
